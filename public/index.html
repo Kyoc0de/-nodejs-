@@ -8,197 +8,190 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Kyo's note</title>
-  <link rel="icon" type="image/x-icon" href="icon.ico" />
+  <title>Blog Home - Start Bootstrap Template</title>
 
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- Custom fonts for this template -->
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet'
-    type='text/css'>
-  <link
-    href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
-    rel='stylesheet' type='text/css'>
-
   <!-- Custom styles for this template -->
-  <link href="css/clean-blog.min.css" rel="stylesheet">
-
-  <!-- axios-->
-  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <link href="css/blog-home.css" rel="stylesheet">
 
 </head>
 
 <body>
 
   <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="index.html">Kyo's note 学习笔记</a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-        data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
-        aria-label="Toggle navigation">
-        Menu
-        <i class="fas fa-bars"></i>
+      <a class="navbar-brand" href="#">Kyo's note | 学习笔记</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
       </button>
-      <!--vue v1-->
-      <div id="app">
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item" v-for="title in titles">
-              <a class="nav-link" :href="title.url">{{title.title}}</a>
-            </li>
-          </ul>
-        </div>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Front-end | 前端</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Back-end | 后端</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Other | 其他</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About me</a>
+          </li>
+        </ul>
       </div>
-      <!-- v1 -->
     </div>
   </nav>
 
-  <!-- Page Header -->
-  <header class="masthead" style="background-image: url('img/home-bg.jpg')">
-    <div class="overlay"></div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-          <div class="site-heading">
-            <h1>记录学习成长</h1>
-            <span class="subheading">By 不知所措的 Kyo</span>
+  <!-- Page Content -->
+  <div class="container">
+
+    <div class="row">
+
+      <!-- Blog Entries Column -->
+      <div class="col-md-8">
+
+        <h1 class="my-4">Recent articles
+          <small>最新文章</small>
+        </h1>
+
+        <!-- Blog Post -->
+        <div id="vueApp">
+          <div class="card mb-4" v-for="item in postInfo">
+            <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+            <div class="card-body">
+              <h2 class="card-title">{{item.title}}</h2>
+              <p class="card-text">{{item.content}}</p>
+              <a href="#" class="btn btn-primary">Read More &rarr;</a>
+            </div>
+            <div class="card-footer text-muted">
+              Posted on {{item.date}} by
+              <a href="#">{{item.author}}</a>
+            </div>
           </div>
         </div>
+
+
+        <!-- Pagination -->
+        <ul class="pagination justify-content-center mb-4">
+          <li class="page-item" disabled>
+            <a class="page-link" href="#">&larr; Newer</a>
+          </li>
+          <li class="page-item ">
+            <a class="page-link" href="#">Older &rarr;</a>
+          </li>
+        </ul>
+
       </div>
-    </div>
-  </header>
 
-  <!-- Main Content -->
-  <div id="app1">
+      <!-- Sidebar Widgets Column -->
+      <div class="col-md-4">
 
-    
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto">
-        <div class="post-preview">
-
-          <a href="">
-            <h2 class="post-title">
-              {{ info.title }}
-            </h2>
-            <h3 class="post-subtitle">
-              {{ info.content }}
-            </h3>
-          </a>
-          <p class="post-meta">Posted by
-            <a href="#">kyo</a>
-            on December 25, 2019</p>
+        <!-- Search Widget -->
+        <div class="card my-4">
+          <h5 class="card-header">Search</h5>
+          <div class="card-body">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Developing | 正在开发中...">
+              <span class="input-group-btn">
+                <button class="btn btn-secondary" type="button">Go!</button>
+              </span>
+            </div>
+          </div>
         </div>
-        <hr>
 
-        
-        <!-- Pager -->
-        <div class="clearfix">
-          <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
+        <!-- Categories Widget -->
+        <div class="card my-4">
+          <h5 class="card-header">Categories</h5>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-lg-6">
+                <ul class="list-unstyled mb-0">
+                  <li>
+                    <a href="#">Web Design</a>
+                  </li>
+                  <li>
+                    <a href="#">HTML</a>
+                  </li>
+                  <li>
+                    <a href="#">JavaScript</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-lg-6">
+                <ul class="list-unstyled mb-0">
+                  <li>
+                    <a href="#">SpringBoot</a>
+                  </li>
+                  <li>
+                    <a href="#">Node.js</a>
+                  </li>
+                  <li>
+                    <a href="#">Java</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
+
+        <!-- Side Widget -->
+        <div class="card my-4">
+          <h5 class="card-header">保持努力</h5>
+          <div class="card-body">
+            Stay Hungry Stay Foolish
+          </div>
+        </div>
+
       </div>
+
     </div>
+    <!-- /.row -->
+
   </div>
-</div>
-
-  <hr>
+  <!-- /.container -->
 
   <!-- Footer -->
-  <footer>
+  <footer class="py-5 bg-dark">
     <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-          <ul class="list-inline text-center">
-            <li class="list-inline-item">
-              <a href="#">
-                <span class="fa-stack fa-lg">
-                  <i class="fas fa-circle fa-stack-2x"></i>
-                  <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
-                </span>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a href="https://github.com/Kyoc0de">
-                <span class="fa-stack fa-lg">
-                  <i class="fas fa-circle fa-stack-2x"></i>
-                  <i class="fab fa-github fa-stack-1x fa-inverse"></i>
-                </span>
-              </a>
-            </li>
-          </ul>
-          <p class="copyright text-muted">Copyright &copy; Website 2019</p>
-        </div>
-      </div>
+      <p class="m-0 text-center text-white">Copyright &copy; Kyo Website 2020</p>
     </div>
+    <!-- /.container -->
   </footer>
 
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Custom scripts for this template -->
-  <script src="js/clean-blog.min.js"></script>
-
-  <!-- vue -->
-  <script src="js/vue.min.js"></script>
+  <script src="vendor/vue/vue.min.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
   <script>
-    var app = new Vue({
-      el: "#app",
-      data: {
-
-        titles: [{
-            title: "Home",
-            url: "index.html"
-          },
-          {
-            title: "前端",
-            url: "index.html"
-          },
-          {
-            title: "后端",
-            url: "index.html"
-          },
-          {
-            title: "运维",
-            url: "index.html"
-          },
-          {
-            title: "About me",
-            url: "about.html"
-          }
-        ],
-        info: null
+    const app = new Vue({
+      el: '#vueApp',
+      data() {
+        return {
+          msg: 'yes',
+          postInfo: null
+        }
       },
       mounted() {
-                axios({
-                    method: 'GET',
-                    url: 'http://127.0.0.1:3000/blog/api/list'
-                }).then(response => (this.info = response.data.data[0]))
+        axios({
+          method: 'GET',
+          url: 'http://www.kyosnote.online/blog/api/list'
+        }).then(response => (this.postInfo = response.data.data))
 
-            }
+      }
     })
   </script>
-  <script>
-    new Vue({
-        el: '#app1',
-        data() {
-            return {
-                info: null
-            }
-        },
-        mounted() {
-            axios({
-                method: 'GET',
-                url: 'http://127.0.0.1:3000/blog/api/list'
-            }).then(response => (this.info = response.data.data[0]))
-
-        }
-    })
-</script>
 
 </body>
 
